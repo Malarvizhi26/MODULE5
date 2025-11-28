@@ -1,54 +1,51 @@
-# Ex.No:3  
-# Ex.Name: FCFS CPU Scheduling – Waiting Time, Turnaround Time & Averages  
+# Ex.No:3
+# Ex.Name: write a C++ program to implement FCFS algorithm (to read no of.process p1,p2,p3 and p4 and its burst time  from the user )& find out waiting time,turn around time,average waiting time & average turn around time?
 
-## Date:  
+## Aim:
+To write a C++ program to implement FCFS algorithm.
 
-## Aim:  
-To implement the FCFS (First-Come, First-Served) scheduling algorithm for a set of processes given only their burst times, and to compute waiting times, turnaround times, and averages.  
-
-## Algorithm:  
-1. Start the program.  
-2. Read burst times for processes.  
-3. Calculate waiting times (WT):  
-   - `wt[0] = 0`  
-   - `wt[i] = wt[i-1] + bt[i-1]`  
-4. Calculate turnaround times (TAT):  
-   - `tat[i] = wt[i] + bt[i]`  
-5. Compute average waiting time and average turnaround time.  
-6. Display the process table and averages.  
-7. Stop the program.  
+## Algorithm:
+1. Start the program.
+2. Read number of processes (here 4) and their burst times from user.
+3. Initialize waiting time of first process to 0.
+4. Calculate waiting time for other processes: waiting[i] = waiting[i-1] + burst[i-1].
+5. Calculate turn-around time: turnaround[i] = waiting[i] + burst[i].
+6. Compute total waiting time and total turnaround time.
+7. Find average waiting time and average turnaround time.
+8. Display waiting time, turn-around time for each process and averages.
+9. End program.
 
 ## Program:
 ```
-#include <bits/stdc++.h>
+#include <iostream>
+#include <queue>
 using namespace std;
 
-int main() {
-    vector<int> bt;
-    int x;
-    while (cin >> x) bt.push_back(x);
-
-    int n = bt.size();
-    vector<int> wt(n,0), tat(n,0);
-
-    for (int i = 1; i < n; i++) wt[i] = wt[i-1] + bt[i-1];
-    for (int i = 0; i < n; i++) tat[i] = wt[i] + bt[i];
-
-    cout << "Processes   BT time   WT time   TA time\n";
-    for (int i = 0; i < n; i++)
-        cout << setw(8) << i+1 << setw(8) << bt[i] 
-             << setw(8) << wt[i] << setw(8) << tat[i] << "\n";
-
-    double avg_wt = accumulate(wt.begin(), wt.end(), 0.0) / n;
-    double avg_tat = accumulate(tat.begin(), tat.end(), 0.0) / n;
-
-    cout << "Average waiting time = " << avg_wt << "\n";
-    cout << "Average turn around time = " << avg_tat << "\n";
+int main(){
+    cout << "Processes   BT time   WT time   TA time" << endl;
+    queue<int> processes;
+    int a;
+    for(int i=0;i<4;i++){
+        cin >> a;
+        processes.push(a);
+    }
+    int wt=0,ta=0,i=1,cn=0,wn=0;
+    while(!processes.empty()){
+        wn += wt;
+        ta+=processes.front();
+        cn += ta;
+        cout << "       " << i << "       " << processes.front() << "       " << wt << "       " << ta << endl;
+        wt+=processes.front();
+        processes.pop();
+        i++;
+    }
+    cout << "Average waiting time = " << wn/4.0 << endl;
+    cout << "Average turn around time = " << cn/4.0 << endl;
 }
 ```
 
 ## Output:
-<img width="861" height="798" alt="image" src="https://github.com/user-attachments/assets/cb196cd3-2dee-476f-9ccb-9adf5024f0be" />
+<img width="1127" height="777" alt="Screenshot 2025-09-20 195612" src="https://github.com/user-attachments/assets/b043a4e7-ba4b-40df-8c86-bc918a166a6d" />
 
 ## Result:
-Thus,the program was executed successfully.
+Thus the program correctly implements FCFS Scheduling.
