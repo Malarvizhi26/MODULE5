@@ -1,45 +1,43 @@
-# Ex.No:4  
-# Ex.Name: Queue ADT using STL – size, first, and last elements (max size 100)  
+# Ex.No:4
+# Ex.Name: Write a CPP Program to insert character values in to Queue ADT  and display size of the queue,and first,Last element of the queue (use STL and set maximum size of the is 100)
 
-## Date:  
+## Aim:
+To write a CPP Program to insert character values in to Queue ADT  and display size of the queue,and first,Last element of the queue 
 
-## Aim:  
-To insert elements into a Queue ADT using STL and display the size, first element, and last element.  
-
-## Algorithm:  
-1. Start the program.  
-2. Read the number of elements `n`.  
-3. Insert the elements into a queue (maximum size 100).  
-4. Display:  
-   - Size of queue  
-   - First element  
-   - Last element  
-5. Stop the program.  
+## Algorithm:
+1. Start the program.
+2. Include queue and iostream libraries.
+3. Create a queue of type char.
+4. Insert characters into the queue using push().
+5. Display the size of the queue using size().
+6. Display the first element using front() and the last element using back().
+7. End the program.
 
 ## Program:
 ```
-#include <bits/stdc++.h>
+#include <iostream>
+#include<queue>
 using namespace std;
-
-int main() {
-    int n; 
-    cin >> n;
-    queue<int> q;
-    for (int i = 0; i < n; i++) {
-        int val; cin >> val;
-        if (q.size() < 100) q.push(val);
+int main()
+{
+    queue<char> q;
+    int i,n;
+    cin>>n;
+    char x[n];
+    for(i=1;i<=n;i++)
+    {
+    cin>>x[i];
+    q.push(x[i]);
     }
-
-    cout << "Size of the Queue is:" << q.size() << "\n";
-    if (!q.empty()) {
-        cout << "The First Element of the Queue is:" << q.front() << "\n";
-        cout << "The Last Element of the Queue is:" << q.back() << "\n";
-    }
+    cout<<"Size of the Queue is:"<<q.size()<<endl;
+    cout<<"The First Element of the Queue is:"<<q.front()<<endl;
+    cout<<"The Last Element of the Queue is:"<<q.back();
 }
 ```
 
+
 ## Output:
-<img width="857" height="506" alt="image" src="https://github.com/user-attachments/assets/905d6ebb-1186-49cc-8586-ab9d65ac4810" />
+<img width="1111" height="488" alt="Screenshot 2025-09-20 195902" src="https://github.com/user-attachments/assets/4bad8182-38f6-4796-ad0f-0ca0964445d8" />
 
 ## Result:
-Thus,the Program was executed successfully.
+The program successfully inserts character values in to Queue ADT  and display size of the queue,and first,Last element of the queue.
