@@ -1,5 +1,5 @@
 # Ex.No:2  
-# Ex.Name: Insert float elements into Stack ADT using STL and display  
+# Ex.Name: Insert float elements into Stack ADT using STL and display 
 
 ## Date:  
 
